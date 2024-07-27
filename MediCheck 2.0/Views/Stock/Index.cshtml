@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PROG7311_PART2_ST10091214.Models.Products>
+
+@{
+	ViewData["Title"] = "Index";
+}
+<body style="background-color:seagreen; font-family:Consolas;">
+	<h1>Product List</h1>
+
+	@*<p>
+	<a asp-action="Create">Create New</a>
+	</p>*@
+	@if (TempData["Message"] != null)
+	{
+		<div class="alert alert-info">
+			@TempData["Message"]
+		</div>
+	}
+	@using (Html.BeginForm("FilteredProducts", "Product", FormMethod.Get))
+	{
+		<div class="form-group">
+			<label for="filterByDate">Filter by Date:</label>
+			<input type="date" id="filterByDate" name="filterByDate" class="form-control" value="@ViewBag.FilterByDate" />
+		</div>
+
+		<div class="form-group">
+			<label for="filterByProductType">Filter by Product Type:</label>
+			<select id="filterByProductType" name="filterByProductType" class="form-control">
+				<option value="">All</option>
+				@foreach (var productType in ViewBag.Product_Types)
+				{
+					<option value="@productType">@productType</option>
+				}
+			</select>
+		</div>
+		<br />
+		<button type="submit" class="btn btn-primary" style="color:cadetblue; font-weight:bold;color:black ">Search</button>
+	}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					Product ID
+				</th>
+				<th>
+					Farmer ID
+				</th>
+				<th>
+					Product Name
+				</th>
+				<th>
+					Date Added
+				</th>
+				<th>
+					Product Type
+				</th>
+				<th>
+					Quantity
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.productID)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.farmerID)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.productName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.date_added)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.productType)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.quantity)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "Edit", new { id=item.productID }) |
+						@Html.ActionLink("Details", "Details", new { id=item.productID }) |
+						@Html.ActionLink("Delete", "Delete", new { id=item.productID })
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</body>

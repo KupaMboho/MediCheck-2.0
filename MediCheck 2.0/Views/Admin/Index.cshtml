@@ -1,0 +1,40 @@
+﻿@{
+	ViewData["Title"] = "Administrator Login";
+}
+<head style="background-color: mediumseagreen; font-family: Consolas">
+	<title>Admin Login</title>
+	<style>
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+		.form-control {
+			width: 100%;
+		}
+	</style>
+</head>
+<body style="background-color: mediumseagreen; font-family: 'Times New Roman'">
+	<div class="text-center">
+		<h1>Administrator Login</h1>
+		<br />
+		<p>Please enter your administrative credentials to access the portal :)</p>
+		<hr />
+		<form method="post" asp-controller="Admin" asp-action="Index">
+			<label for="username">Username:</label>
+			<input type="text" id="username" name="txtUsername" required><br><br>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="txtPassword" required><br><br>
+
+			<button type="submit" id="loginButton">Login</button>
+			@if (TempData.ContainsKey("InvalidCredentialsMessage"))
+			{
+				<div class="error-message" style="font-weight:bold;color:red">
+					@TempData["InvalidCredentialsMessage"]
+				</div>
+			}
+		</form>
+	</div>
+</body>
+
+
+

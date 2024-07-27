@@ -1,0 +1,26 @@
+﻿@model PROG7311_PART2_ST10091214.Models.Farmer
+
+@{
+	ViewData["Title"] = "Details";
+}
+<body style="background-color:mediumseagreen; font-family:Consolas">
+	<h1>Farmer Details</h1>
+	<hr />
+	<div>
+		<div>
+			<label>Farmer ID:</label> @Model.Id
+		</div>
+		<div>
+			<label>Name:</label> @Model.name
+		</div>
+		<div>
+			<label>Surname:</label> @Model.surname
+		</div>
+		<div>
+			<label>Contact:</label> @Model.contact_number
+		</div>
+	</div>
+	<div>
+		<a style="color:black" href="javascript:history.back()">Back</a></a>
+	</div>
+</body>

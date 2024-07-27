@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PROG7311_PART2_ST10091214.Models.Employee>
+
+@{
+	ViewData["Title"] = "Employee Details";
+}
+
+<h1>Details</h1>
+<body style="background-color:mediumseagreen; font-family:Consolas">
+	<p>
+		<a asp-action="Create">Add Employee</a>
+	</p>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					Username
+				</th>
+				<th>
+					Employee ID
+				</th>
+				<th>
+					Name
+				</th>
+				<th>
+					Surname
+				</th>
+				<th>
+					Contact Details
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.username)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.emp_id)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.surname)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.phone)
+					</td>
+					<td style="color:black">
+						@Html.ActionLink("Edit", "Edit", new { id=item.emp_id }) |
+						@Html.ActionLink("Details", "Index", new { id=item.emp_id }) |
+						@Html.ActionLink("Delete", "Delete", new { id=item.emp_id })
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<a style="color:black" href="javascript:history.back()">Back</a>
+</body>

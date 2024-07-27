@@ -1,0 +1,57 @@
+﻿@{
+	ViewData["Title"] = "Menu";
+}
+<body>
+	<style>
+		body {
+			background-color: mediumseagreen;
+			font-family: Consolas;
+		}
+
+		.container {
+			text-align: center;
+			padding-top: 100px;
+		}
+
+		.button {
+			display: inline-block;
+			margin: 10px;
+			padding: 15px 30px;
+			border: none;
+			border-radius: 5px;
+			font-size: 18px;
+			cursor: pointer;
+		}
+
+		.button-employee {
+			background-color: darkslateblue;
+		}
+
+		.button-farmer {
+			background-color: darkgoldenrod;
+		}
+
+		.button-product {
+			background-color: aquamarine;
+		}
+
+		.button-training {
+			background-color: indianred;
+		}
+	</style>
+	<h1>Welcome to the Farm Central Admin Login!</h1>
+	<hr />
+	<p>
+		As the administrator, you hold the reins of Farm Central, overseeing the management of farmers and employees.
+		With your control, you can ensure smooth operations and foster growth in the agricultural realm.
+		Thank you for being an essential part of Farm Central's journey towards a prosperous future. Together, we can cultivate a brighter tomorrow.
+	</p>
+	<br />
+	<div>
+		<a href="@Url.Action("Details", "Employee")" class="button button-employee" style=" color:black">Employee Details</a>
+		<a href="@Url.Action("Index", "Farmer", new { area = "Farmer" })" class="button button-farmer" style=" color:black">Farmer Details</a>
+		<a href="@Url.Action("Products", "Product")" class="button button-product" style=" color:black">Product Details</a>
+		<a href="@Url.Action("EmployeeTraining", "Employee")" class="button button-training" style=" color:black">Employee Training</a>
+	</div>
+	<br />
+</body>

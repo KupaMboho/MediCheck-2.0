@@ -1,0 +1,67 @@
+﻿@model PROG7311_PART2_ST10091214.Models.Farmer
+
+@{
+	ViewData["Title"] = "Create Farmer";
+}
+
+<body style="background-color: mediumseagreen; font-family: Consolas; align-items: center" class="centre">
+	<div class="text-center align-items-center">
+		<h1>Add Farmer</h1>
+		<p>
+			Introducing Create, the perfect platform to add a farmer on Farmer Central.
+			Easily input all the essential details, from name and personal details.
+			Add to the farming community now!
+		</p>
+		<h4>Please fill in all the fields</h4>
+		<hr />
+		<div class="col-md-4 d-inline-block">
+			<form asp-action="Create" align="center">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="form-group">
+					<label asp-for="Id" class="control-label">Farmer ID</label>
+					<input asp-for="Id" name="txtID" class="form-control" required />
+					<span asp-validation-for="Id" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="name" class="control-label">Farmer Name</label>
+					<input asp-for="name" name="txtName" class="form-control" required />
+					<span asp-validation-for="name" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="surname" class="control-label">Farmer Surname</label>
+					<input asp-for="surname" name="txtSurname" class="form-control" required />
+					<span asp-validation-for="surname" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="contact_number" class="control-label">Contact Number</label>
+					<input asp-for="contact_number" name="txtContactNumber" class="form-control" required />
+					<span asp-validation-for="contact_number" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label for="username" class="control-label">Username</label>
+					<input type="text" id="username" name="txtUsername" class="form-control" required />
+					<span asp-validation-for="contact_number" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label for="password" class="control-label">Password</label>
+					<input type="password" id="password" name="txtPassword" class="form-control" required />
+					<span asp-validation-for="contact_number" class="text-danger"></span>
+				</div>
+				<br />
+				<div class="form-group">
+					<input type="submit" value="Create Farmer" class="btn btn-primary" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<div>
+		<a asp-action="Index" style="color:black">Farmer List</a> |
+		<a style="color:black" href="javascript:history.back()">Back</a>
+	</div>
+</body>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

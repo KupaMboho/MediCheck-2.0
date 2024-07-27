@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Products>
+
+@{
+	ViewData["Title"] = "Filtered Products";
+}
+<body style="background-color:mediumseagreen; font-family:Consolas;">
+	<h1>Filter products</h1>
+
+	@using (Html.BeginForm("FilteredProducts", "Product", FormMethod.Get))
+	{
+		<div class="form-group">
+			<label for="filterByDate">Filter by Date:</label>
+			<input type="date" id="filterByDate" name="filterByDate" class="form-control" value="@ViewBag.FilterByDate" />
+		</div>
+
+		<div class="form-group">
+			<label for="filterByProductType">Filter by Product Type:</label>
+			<select id="filterByProductType" name="filterByProductType" class="form-control">
+				<option value="">All</option>
+				@foreach (var productType in ViewBag.ProductTypes)
+				{
+					<option value="@productType">@productType</option>
+				}
+			</select>
+		</div>
+		<br />
+		<button type="submit" class="btn btn-primary" style="color:cadetblue">Search</button>
+	}
+	<hr />
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Product ID</th>
+				<th>Farmer ID</th>
+				<th>Product Name</th>
+				<th>Date Added</th>
+				<th>Product Type</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var product in Model)
+			{
+				<tr>
+					<td>@product.productID</td>
+					<td>@product.farmerID</td>
+					<td>@product.productName</td>
+					<td>@product.date_added.ToString("yyyy-MM-dd")</td>
+					<td>@product.productType</td>
+					<td>@product.quantity</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<a style="color:black" href="javascript:history.back()">Back</a>
+</body>

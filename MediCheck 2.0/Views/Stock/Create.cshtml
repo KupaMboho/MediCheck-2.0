@@ -1,0 +1,61 @@
+﻿@model PROG7311_PART2_ST10091214.Models.Products
+
+@{
+	ViewData["Title"] = "Create Product";
+}
+<body style="background-color:mediumseagreen; font-family:Consolas; align-items: center" class="centre">
+	<div class="text-center align-items-center">
+		<h1>Add a product</h1>
+		<h3>Please fill in all the fields</h3>
+		<hr />
+		<div class="row">
+			<div class="col-md-4 d-inline-block">
+				<form asp-action="Create">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-group">
+						<label asp-for="productID" class="control-label"></label>
+						<input asp-for="productID" name="txtProductID" class="form-control" required />
+						<span asp-validation-for="productID" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="farmerID" class="control-label"></label>
+						<input asp-for="farmerID" name="txtFarmerID" class="form-control" required />
+						<span asp-validation-for="farmerID" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="productName" class="control-label"></label>
+						<input asp-for="productName" name="txtName" class="form-control" required />
+						<span asp-validation-for="productName" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="date_added" class="control-label"></label>
+						<input asp-for="date_added" name="txtDate" class="form-control" required />
+						<span asp-validation-for="date_added" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="productType" class="control-label"></label>
+						<input asp-for="productType" name="txtType" class="form-control" required />
+						<span asp-validation-for="productType" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="quantity" class="control-label"></label>
+						<input asp-for="quantity" name="txtQuantity" class="form-control" required />
+						<span asp-validation-for="quantity" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Create Product" class="btn btn-primary" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<div>
+			<a href="javascript:history.back()">Back</a>
+		</div>
+	</div>
+</body>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
+

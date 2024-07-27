@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PROG7311_PART2_ST10091214.Models.EmployeeTraining>
+
+@{
+	ViewData["Title"] = "EmployeeTraining";
+}
+<body style="background-color:mediumseagreen; font-family:Consolas">
+	<h1>Employee Training Information</h1>
+	<br />
+	<hr />
+	<br />
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					Training ID
+				</th>
+				<th>
+					Training Materials
+				</th>
+				<th>
+					Completion Status
+				</th>
+				<th>
+					Employee ID
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.TRAINING_ID)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.TRAINING_MATERIALS)
+					</td>
+					<td style="color: black">
+						@Html.DisplayFor(modelItem => item.COMPLETION_STATUS)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.EMPLOYEE_ID)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "Edit", new { id=item.EMPLOYEE_ID  }) |
+						@Html.ActionLink("Details", "Index", new { id=item.EMPLOYEE_ID  }) |
+						@Html.ActionLink("Delete", "Delete", new {  id=item.EMPLOYEE_ID })
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</body>

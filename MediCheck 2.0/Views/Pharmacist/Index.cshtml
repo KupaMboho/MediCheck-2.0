@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PROG7311_PART2_ST10091214.Models.Farmer>
+
+@{
+	ViewData["Title"] = "Index";
+}
+<body style="background-color:mediumseagreen; font-family:'Consolas'">
+	<h1>Farmer Details</h1>
+	<p>
+		Want to add a new farmer? Click the link
+		<a asp-action="Create" style="color:dodgerblue">Add a Farmer</a>
+	</p>
+	<hr />
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					Farmer ID
+				</th>
+				<th>
+					Name
+				</th>
+				<th>
+					Surname
+				</th>
+				<th>
+					Contact Number
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Id)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.surname)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.contact_number)
+					</td>
+					<td style="color:black">
+						@Html.ActionLink("Delete", "Delete", new { id=item.Id}) |
+						@Html.ActionLink("Products", "ProductByFarmer", "Product", new { farmerId = item.Id }, null)
+
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<a style="color:black" href="javascript:history.back()">Back</a>
+</body>

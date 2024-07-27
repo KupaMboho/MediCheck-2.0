@@ -1,0 +1,58 @@
+﻿@model PROG7311_PART2_ST10091214.Models.Farmer
+
+@{
+	ViewData["Title"] = "Profile";
+}
+
+<h1>Welcome to Farm Central, @Model.name!</h1>
+<hr />
+<p style="align-content:center">
+	This is your profile, you can view your personal information and the products you are currently selling.
+	You can also add, delete and edit any products that you may already have uploaded.
+</p>
+<hr />
+<body style="background-color: mediumseagreen; font-family: Consolas">
+	<div style="font-weight:400">
+		<h3>Your profile information:</h3>
+		<p>Farmer ID:      @Model.Id</p>
+		<p>Full Name:      @Model.name  @Model.surname</p>
+		<p>Contact number: @Model.contact_number</p>
+		<p>Username:       @Model.username</p>
+		<style>
+			.rounded-input {
+				border-radius: 10px;
+				padding: 5px;
+			}
+
+			.blue-button {
+				background-color: blue;
+				color: white;
+				border-radius: 5px;
+				padding: 10px 20px;
+				border: none;
+				cursor: pointer;
+			}
+		</style>
+		<p>
+			Password:
+			<input type="password" id="passwordField" class="rounded-input" value="@Model.password" readonly>
+		</p>
+		<button onclick="togglePasswordVisibility()" class="blue-button">Show/Hide Password</button>
+
+	</div>
+</body>
+<br />
+<p>
+	<a href="@Url.Action("ProductByFarmer", "Product", new { farmerId = Model.Id })">View My Products</a>
+</p>
+<script>
+	function togglePasswordVisibility() {
+		var passwordField = document.getElementById("passwordField");
+		if (passwordField.getAttribute("type") === "password") {
+			passwordField.setAttribute("type", "text");
+		} else {
+			passwordField.setAttribute("type", "password");
+		}
+	}
+</script>
+
